@@ -6,10 +6,17 @@
  * User Manual available at https://docs.gradle.org/6.0/userguide/tutorial_java_projects.html
  */
 
+buildscript {
+  dependencies {
+    classpath "io.franzbecker:gradle-lombok:3.2.0"
+  }
+}
+
 plugins {
     id 'java'
     id 'application'
     id 'eclipse'
+    id 'io.franzbecker.gradle-lombok' version '1.14'
 }
 
 repositories {
@@ -18,7 +25,9 @@ repositories {
 
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'org.apache.commons:commons-lang3:3.4'
     implementation 'org.springframework:spring:2.5.6.SEC03'
+    annotationProcessor "org.projectlombok:lombok:1.18.10"
 
     testImplementation 'junit:junit:4.12'
 }
