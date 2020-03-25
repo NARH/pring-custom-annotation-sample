@@ -3,18 +3,38 @@
  */
 package com.github.narh.sample;
 
+import java.util.Arrays;
+import java.util.function.BiConsumer;
+import java.util.function.Consumer;
+
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.github.narh.sample.exec.AppExec;
 
 public class App {
 
-    public String getGreeting() {
-        return "Hello world.";
-    }
+  public String getGreeting() {
+    return "Hello world.";
+  }
 
-    public static void main(String ...arhs) throws Exception {
-    	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-    	Test1Exec exec = (Test1Exec) context.getBean(Test1Exec.class);
-    	exec.exec();
-        context.close();
-    }
+  public static void main(String... args) throws Exception {
+    ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
+
+    Arrays.asList(args).forEach(Try(exec -> {
+      ((AppExec) context.getBean(exec)).exec();
+    }, (error, exec) -> error.printStackTrace()));
+
+    context.close();
+  }
+
+  public static  <T> Consumer<T> Try(ThrowableConsumer<T> onTry, BiConsumer<Exception, T> onCatch) {
+    return x -> {
+      try {
+        onTry.accept(x);
+      }
+      catch (Exception t) {
+        onCatch.accept(t, x);
+      }
+    };
+  }
 }
