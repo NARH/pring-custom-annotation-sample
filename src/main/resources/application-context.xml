@@ -15,5 +15,6 @@
   http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
   <context:component-scan base-package="com.github.narh.sample" annotation-config="true"/>
-  <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" />
+  <util:properties id="test1" location="classpath:test1.properties" />
+  <util:properties id="test2" location="classpath:test2.properties" />
 </beans>
