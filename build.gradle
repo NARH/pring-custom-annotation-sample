@@ -26,7 +26,9 @@ repositories {
 dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
     implementation 'org.apache.commons:commons-lang3:3.4'
-    implementation 'org.springframework:spring:2.5.6.SEC03'
+//  implementation 'org.springframework:spring:2.5.6.SEC03'
+    implementation 'org.springframework:spring-context:4.1.4.RELEASE'
+
     annotationProcessor "org.projectlombok:lombok:1.18.10"
 
     testImplementation 'junit:junit:4.12'

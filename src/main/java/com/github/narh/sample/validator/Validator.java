@@ -1,6 +1,6 @@
 package com.github.narh.sample.validator;
 
-import javax.xml.bind.ValidationException;
+import com.github.narh.sample.exception.ValidationException;
 
 public interface Validator<T> {
 

@@ -10,8 +10,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @Configuration
-@PropertySource(value = {"classpath:test.properties"})
-public class App {
+@PropertySource(value = {"classpath:test2.properties"})
+public class App2 {
 
     public String getGreeting() {
         return "Hello world.";
@@ -19,7 +19,7 @@ public class App {
 
     public static void main(String ...arhs) throws Exception {
     	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-    	TestBean bean = (TestBean) context.getBean(TestBean.class);
+    	Test2Bean bean = (Test2Bean) context.getBean(Test2Bean.class);
         System.out.println(bean.toString());
         context.close();
     }
