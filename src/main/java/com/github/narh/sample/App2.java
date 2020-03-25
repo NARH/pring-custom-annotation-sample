@@ -4,13 +4,9 @@
 package com.github.narh.sample;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
-@Configuration
-@PropertySource(value = {"classpath:test2.properties"})
 public class App2 {
 
     public String getGreeting() {
@@ -19,13 +15,8 @@ public class App2 {
 
     public static void main(String ...arhs) throws Exception {
     	ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
-    	Test2Bean bean = (Test2Bean) context.getBean(Test2Bean.class);
-        System.out.println(bean.toString());
+    	Test2Exec exec = (Test2Exec) context.getBean(Test2Exec.class);
+    	exec.exec();
         context.close();
-    }
-
-	@Bean
-    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        return new PropertySourcesPlaceholderConfigurer();
     }
 }

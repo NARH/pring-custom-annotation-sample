@@ -8,10 +8,10 @@ import lombok.Data;
 @Component @Data
 public class TestBean {
 
-	@Value("${foo}")
+	@Value("${foo:1}")
 	private Integer foo;
-	@Value("${test}")
+	@Value("${test:hoge}")
 	private String test;
-	@Value("${key}")
+	@Value("${key:fuga}")
 	private String key;
 }
