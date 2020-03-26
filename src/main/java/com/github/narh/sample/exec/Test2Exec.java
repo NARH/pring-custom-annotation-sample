@@ -6,7 +6,9 @@ import org.springframework.stereotype.Component;
 
 import com.github.narh.sample.bean.Test2Bean;
 
-@Component
+import lombok.extern.slf4j.Slf4j;
+
+@Component @Slf4j
 public class Test2Exec implements AppExec {
 
   @Autowired
@@ -14,7 +16,7 @@ public class Test2Exec implements AppExec {
 
   @Override
   public void exec() throws Exception {
-    System.out.println(test2Bean.toString());
+    log.info(test2Bean.toString());
   }
 
   @Bean

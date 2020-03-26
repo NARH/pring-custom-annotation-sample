@@ -20,7 +20,7 @@ public class App {
   public static void main(String... args) throws Exception {
     ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
 
-    Arrays.asList(args).forEach(Try(exec -> {
+    Arrays.asList(args).stream().parallel().forEach(Try(exec -> {
       ((AppExec) context.getBean(exec)).exec();
     }, (error, exec) -> error.printStackTrace()));
 
